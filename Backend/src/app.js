@@ -15,7 +15,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename); 
  
 // 🔥 MIDDLEWARE
-app.use(cors());
+app.use(cors({
+  origin: "https://portfolio-five-phi-tcfc4kibkx.vercel.app",
+  credentials: true
+}));
 app.use(express.json());
 // ⏰ Run every day at 12:00 AM
 cron.schedule("0 0 * * *", () => {

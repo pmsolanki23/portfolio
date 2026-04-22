@@ -16,9 +16,12 @@ const __dirname = path.dirname(__filename);
  
 // 🔥 MIDDLEWARE
 app.use(cors({
-  origin: "https://portfolio-five-phi-tcfc4kibkx.vercel.app",
+    origin: "https://portfolio-five-phi-tcfc4kibkx.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
+
 }));
+app.options("*", cors());
 app.use(express.json());
 // ⏰ Run every day at 12:00 AM
 cron.schedule("0 0 * * *", () => {

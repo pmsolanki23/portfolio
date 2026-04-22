@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================================= */
+/* 🌐 DESIGN TOKENS */
+/* ========================================================= */
+:root {
+  --accent-blue: #60a5fa;
+  --accent-mint: #34d399;
+}
+
+/* ========================================================= */
+/* 🌍 GLOBAL BASE (FIXED ✅ NO CONFLICT) */
+/* ========================================================= */
+@layer base {
+  html {
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+
+  }
+
+ body {
+  @apply font-sans transition-all duration-300;
+  @apply bg-[#f8fafc] text-gray-900;
+}
+
+html.dark body {
+  @apply bg-[#020617] text-gray-200;
+}
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+/* ========================================================= */
+/* 💎 GLASS SYSTEM */
+/* ========================================================= */
+.glass {
+  @apply rounded-2xl backdrop-blur-xl transition-all duration-300;
+
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.glass:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* DARK */
+.dark .glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 10px 40px rgba(16, 185, 129, 0.08);
+}
+
+.dark .glass:hover {
+  box-shadow: 0 20px 80px rgba(16, 185, 129, 0.2);
+}
+/* ========================================================= */
+/* ✨ GRADIENT TEXT */
+/* ========================================================= */
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #7aa2ff,
+    #6ee7b7,
+    #4ade80
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  display: inline-block;
+}
+
+/* ========================================================= */
+/* 🔥 BUTTON SYSTEM */
+/* ========================================================= */
+.btn-premium {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+
+  background: linear-gradient(135deg, #60a5fa, #34d399);
+  color: #020617;
+
+  box-shadow: 0 8px 25px rgba(52, 211, 153, 0.3);
+}
+
+.btn-premium:hover {
+  transform: scale(1.06);
+  box-shadow: 0 15px 50px rgba(52, 211, 153, 0.5);
+}
+
+/* ========================================================= */
+/* 🧾 INPUT SYSTEM */
+/* ========================================================= */
+.input-premium {
+  @apply w-full p-3 pl-12 rounded-xl outline-none transition-all duration-300;
+
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: #020617;
+}
+
+.dark .input-premium {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white;
+}
+
+.input-premium:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+}
+/* ========================================================= */
+/* 🌟 HOVER EFFECT */
+/* ========================================================= */
+.glass:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+}
+
+/* ========================================================= */
+/* 🎯 TEXT COLORS FIX */
+/* ========================================================= */
+.dark .text-gray-300 {
+  color: #d1d5db;
+}
+
+.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+/* ========================================================= */
+/* 🖱️ SCROLLBAR */
+/* ========================================================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent-blue), var(--accent-mint));
+  border-radius: 10px;
+}
+
+/* ========================================================= */
+/* ⚡ UTILITIES */
+/* ========================================================= */
+.smooth {
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-btn {
+  @apply p-3 rounded-full text-black transition;
+
+  background: linear-gradient(135deg, #60a5fa, #34d399);
+
+  box-shadow: 0 5px 20px rgba(52,211,153,0.3);
+}
+
+.icon-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 10px 40px rgba(52,211,153,0.5);
+}
+
+.tech-badge {
+  @apply text-xs px-3 py-1 rounded-full 
+         bg-black/5 border border-black/10
+         dark:bg-white/10 dark:border-white/10;
+}
+
+/* ========================================================= */
+/* 🧊 CARD UI (FIXED 🔥 NO WHITE ISSUE) */
+/* ========================================================= */
+.card-ui {
+  @apply rounded-3xl p-5 transition-all duration-500;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.9),
+    rgba(255,255,255,0.6)
+  );
+
+  border: 1px solid rgba(0,0,0,0.06);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.card-ui:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.15);
+}
+
+/* DARK */
+.dark .card-ui {
+  background: linear-gradient(
+    145deg,
+    rgba(15,23,42,0.9),
+    rgba(15,23,42,0.6)
+  );
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 10px 40px rgba(16,185,129,0.1);
+}
+
+.dark .card-ui:hover {
+  box-shadow: 0 30px 100px rgba(16,185,129,0.25);
+}
+
+
+html, body {
+  overflow-x: hidden;
+}

@@ -67,7 +67,8 @@ export default function Projects() {
   {/* IMAGE */}
   <div className="relative overflow-hidden rounded-2xl">
     <img
-      src={`http://localhost:5000${project.image}`}
+      // src={`http://localhost:5000${project.image}`}
+src={`${import.meta.env.VITE_API_URL}${project.image}`}
       alt={project.title}
       className="
         w-full h-56 md:h-64 object-cover

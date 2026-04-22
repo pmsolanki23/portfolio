@@ -351,7 +351,8 @@ export default function Projects() {
             {/* IMAGE */}
             <div className="relative h-48 overflow-hidden">
               <img
-                src={`http://localhost:5000${project.image}`}
+                // src={`http://localhost:5000${project.image}`}
+src={`${import.meta.env.VITE_API_URL}${project.image}`}
                 alt={project.title}
                 className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
               />

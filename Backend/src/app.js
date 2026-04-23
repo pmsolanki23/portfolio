@@ -18,7 +18,7 @@ const allowedOrigins = new Set(
   [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://portfolio-rhzr.onrender.com/",
+    "https://portfolio-rhzr.onrender.com",
     process.env.FRONTEND_URL,
     ...(process.env.FRONTEND_URLS || "")
       .split(",")

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: portfolio-backend
+    env: node
+    rootDir: Backend
+    buildCommand: npm install
+    startCommand: npm start

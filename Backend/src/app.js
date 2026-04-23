@@ -8,40 +8,64 @@ import projectRoutes from "./routes/project.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import reviewRoutes from "./routes/review.routes.js";
+
 const app = express();
 
-// 🔥 FIX __dirnamea
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// 🔥 MIDDLEWARE
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://portfolio-five-phi-tcfc4kibkx.vercel.app",
-    ],
-
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
+const allowedOrigins = new Set(
+  [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    process.env.FRONTEND_URL,
+    ...(process.env.FRONTEND_URLS || "")
+      .split(",")
+      .map((origin) => origin.trim())
+      .filter(Boolean),
+  ].filter(Boolean),
 );
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    const isAllowedVercelPreview =
+      /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin);
+
+    if (allowedOrigins.has(origin) || isAllowedVercelPreview) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`CORS blocked for origin: ${origin}`));
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 app.use(express.json());
-// ⏰ Run every day at 12:00 AM
+
 cron.schedule("0 0 * * *", () => {
   autoDeleteContacts();
 });
-// 🔥 STATIC FILES (UPLOADS)
+
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
-// 🔥 ROUTES
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ ok: true });
+});
+
 app.use("/api/projects", projectRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/reviews", reviewRoutes);
 
 app.use((err, req, res, next) => {
-  console.error("🔥 GLOBAL ERROR:", err);
+  console.error("GLOBAL ERROR:", err);
 
   res.status(500).json({
     message: err.message,
@@ -49,9 +73,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 🔥 TEST ROUTE
 app.get("/", (req, res) => {
-  res.send("API Running ");
+  res.send("API Running");
 });
 
 export default app;

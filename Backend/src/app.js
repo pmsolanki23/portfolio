@@ -15,17 +15,28 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 🔥 MIDDLEWARE
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://portfolio-five-phi-tcfc4kibkx.vercel.app",
-    ],
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://portfolio-five-phi-tcfc4kibkx.vercel.app",
+//     ],
 
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true,
+//   }),
+// );
+
+// ✅ सबसे ऊपर लगाओ
+app.use(cors({
+  origin: "*", // 🔥 TEST के लिए open रखो
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
+// ✅ VERY IMPORTANT (preflight fix)
+app.options("*", cors());
+
 app.use(express.json());
 // ⏰ Run every day at 12:00 AM
 cron.schedule("0 0 * * *", () => {

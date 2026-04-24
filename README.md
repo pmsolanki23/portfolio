@@ -1,4 +1,4 @@
-# 🚀 Portfolio - MERN Stack Developer
+#  Portfolio - MERN Stack Developer
 
 A modern, fully responsive **Portfolio Web Application** built using the MERN stack (MongoDB, Express, React, Node.js).
 It showcases projects, skills, reviews, and includes a secure admin dashboard.
@@ -24,7 +24,7 @@ It showcases projects, skills, reviews, and includes a secure admin dashboard.
 
 ### 🔐 Admin Panel
 
-* Secure admin login (JWT आधारित)
+* Secure admin login (JWT)
 * Add / Edit / Delete projects
 * Upload project images (Cloudinary)
 * Manage reviews (Approve / Reject)
@@ -101,7 +101,7 @@ FRONTEND_URL=https://portfolio-peach-ten-24.vercel.app
 
 ---
 
-## 🚀 Installation & Setup
+##  Installation & Setup
 
 ### 1️⃣ Clone Repository
 

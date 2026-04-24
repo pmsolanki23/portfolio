@@ -206,7 +206,7 @@
 //       "
 //       >
 //         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-//           Let’s build something impactful 
+//           Let’s build something impactful
 //         </h2>
 
 //         <p className="text-gray-600 dark:text-gray-400 mt-4">
@@ -234,9 +234,6 @@
 //   );
 // }
 
-
-
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getProjects } from "../services/api";
@@ -261,24 +258,19 @@ export default function Projects() {
     filter === "All"
       ? projects
       : projects.filter(
-          (p) =>
-            p.category ===
-            filter.toLowerCase().replace(" ", "")
+          (p) => p.category === filter.toLowerCase().replace(" ", ""),
         );
 
   // ✅ PAGINATION
   const totalPages = Math.max(
     1,
-    Math.ceil(filteredProjects.length / projectsPerPage)
+    Math.ceil(filteredProjects.length / projectsPerPage),
   );
 
   const indexOfLast = currentPage * projectsPerPage;
   const indexOfFirst = indexOfLast - projectsPerPage;
 
-  const currentProjects = filteredProjects.slice(
-    indexOfFirst,
-    indexOfLast
-  );
+  const currentProjects = filteredProjects.slice(indexOfFirst, indexOfLast);
 
   // 🔥 RESET PAGE WHEN FILTER CHANGE
   useEffect(() => {
@@ -297,18 +289,16 @@ export default function Projects() {
 
   return (
     <section className="relative pt-36 pb-28 px-6 max-w-7xl mx-auto">
-
       {/* 🔥 BACKGROUND */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500/10 via-transparent to-emerald-500/10 blur-3xl"></div>
 
       {/* 🔥 HERO */}
       <div className="text-center mb-16">
-        <h1 className="text-5xl font-bold gradient-text mb-4">
-          My Work
-        </h1>
+        <h1 className="text-5xl font-bold gradient-text mb-4">My Work</h1>
 
         <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          A collection of projects focused on performance, scalability, and real-world problem solving.
+          A collection of projects focused on performance, scalability, and
+          real-world problem solving.
         </p>
       </div>
 
@@ -352,7 +342,7 @@ export default function Projects() {
             <div className="relative h-48 overflow-hidden">
               <img
                 // src={`http://localhost:5000${project.image}`}
-src={`${import.meta.env.VITE_API_URL}${project.image}`}
+                src={`${import.meta.env.VITE_API_URL.replace("/api", "")}${project.image}`}
                 alt={project.title}
                 className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
               />
@@ -381,7 +371,6 @@ src={`${import.meta.env.VITE_API_URL}${project.image}`}
               <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
                 {project.title}
               </h3>
-
 
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">
                 {project.description}
@@ -416,11 +405,12 @@ src={`${import.meta.env.VITE_API_URL}${project.image}`}
       )}
 
       {/* 🚀 CTA */}
-      <section className="mt-28 text-center py-20 px-6 rounded-3xl
+      <section
+        className="mt-28 text-center py-20 px-6 rounded-3xl
       bg-gradient-to-r from-blue-50 via-white to-emerald-50
       dark:from-[#020617] dark:via-[#020617] dark:to-[#020617]
-      border border-gray-200 dark:border-white/10">
-
+      border border-gray-200 dark:border-white/10"
+      >
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
           Let’s build something impactful
         </h2>
@@ -438,7 +428,6 @@ src={`${import.meta.env.VITE_API_URL}${project.image}`}
           Let’s Connect
         </a>
       </section>
-
     </section>
   );
 }

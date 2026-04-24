@@ -399,8 +399,18 @@ export const permanentDelete = async (req, res) => {
 
 // 🔥 GET (exclude deleted)
 export const getProjects = async (req, res) => {
-  const projects = await Project.find({ isDeleted: false });
-  res.json(projects);
+  try {
+    const projects = await Project.find({
+      $or: [
+        { isDeleted: false },
+        { isDeleted: { $exists: false } }
+      ]
+    });
+
+    res.json(projects);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching projects" });
+  }
 };
 
 // 🔥 TRASH

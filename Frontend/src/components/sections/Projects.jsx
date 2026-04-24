@@ -237,7 +237,7 @@ export default function Projects() {
                         key={i}
                         className="
                           px-3 py-1 text-xs rounded-full
-                          bg-gray-100 text-gray-700 border
+                          bg-gray-100 text-gray-700 
                           dark:bg-white/10 dark:text-gray-300
                         "
                       >

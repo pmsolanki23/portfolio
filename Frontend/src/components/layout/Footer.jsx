@@ -146,7 +146,7 @@ export default function Footer() {
                 link: "https://github.com/pmsolanki23",
                 color: "hover:bg-black",
               },
-              { icon: <FaLinkedin />, link: "#", color: "hover:bg-blue-500" },
+              { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/pruthvi-solanki-691b0422b", color: "hover:bg-blue-500" },
               {
                 icon: <FaBriefcase />,
                 link: "#",

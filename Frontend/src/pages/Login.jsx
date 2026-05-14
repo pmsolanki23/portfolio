@@ -101,6 +101,7 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import API from "../services/api";
 import Navbar from "../components/layout/Navbar";
+import { saveAuth } from "../utils/auth";
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -116,7 +117,7 @@ export default function Login() {
     try {
       const res = await API.post("/auth/login", form);
 
-      localStorage.setItem("token", res.data.token);
+      saveAuth(res.data);
       toast.success("Login Successful 🔐");
 
       navigate("/admin");

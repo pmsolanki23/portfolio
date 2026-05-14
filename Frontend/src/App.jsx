@@ -409,7 +409,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -438,10 +437,11 @@ import AdminPublicRoute from "./routes/AdminPublicRoute";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 import LogoStroke from "./components/ui/LogoStroke";
+import { clearAuth } from "./utils/auth";
 
 // 🔥 LOGOUT
 const handleLogout = () => {
-  localStorage.removeItem("token");
+  clearAuth();
   window.location.href = "/admin/login";
 };
 
@@ -477,9 +477,6 @@ function MainLayout({ children }) {
 
 // 🔥 ROUTES WRAPPER
 function LayoutWrapper() {
-  const location = useLocation();
-  const isAdmin = location.pathname.startsWith("/admin");
-
   return (
     <RouteGuard>
       <Cursor />

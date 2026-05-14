@@ -1,8 +1,10 @@
 import "./config/env.js"
 import app from "./app.js";
 import { connectDB } from "./config/db.js";
+import { ensureAdmin } from "./utils/ensureAdmin.js";
 
-connectDB();
+await connectDB();
+await ensureAdmin();
 
 const PORT = process.env.PORT || 5000;
 

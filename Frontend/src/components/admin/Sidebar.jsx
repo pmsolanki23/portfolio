@@ -181,6 +181,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
+import { clearAuth } from "../../utils/auth";
 
 const menu = [
   { name: "Dashboard", path: "/admin", icon: <FaUser /> },
@@ -194,7 +195,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const [showLogout, setShowLogout] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    clearAuth();
     toast.success("Logged out 👋");
 
     setTimeout(() => {

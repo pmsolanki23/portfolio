@@ -187,7 +187,7 @@ This project is licensed under the MIT License.
 **Pruthvi Solanki**
 
 * MERN Stack Developer
-* GitHub: https://github.com/your-username
+* GitHub: https://github.com/pmsolanki23
 * LinkedIn: https://linkedin.com/in/your-profile
 
 ---
